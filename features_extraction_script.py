@@ -129,5 +129,5 @@ for index, name in enumerate(names):
 # data = np.load(os.path.join('data', 'feature_extracted', 'feature_extracted_dataset_1.npz'), allow_pickle = True)
 # datasets = data['feature_extracted_dataset'].tolist()
 # ecg_train = datasets.get('ECG_features')[0]
-# ecg_test = datasets.get('ECG_features')[0]
+# ecg_test = datasets.get('ECG_features')[1]
 
