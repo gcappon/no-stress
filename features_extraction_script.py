@@ -115,7 +115,7 @@ for index, name in enumerate(names):
         data_dict[key] = [newTrain, newTest]
 
     # Save
-    extraction_name = "feature_extracted_dataset_{}".format(index)
+    extraction_name = "feature_extracted_dataset_{}".format(index+1)
     np.savez(os.path.join('data', 'feature_extracted', extraction_name),
              feature_extracted_dataset=data_dict,
              y_train=y_train,
