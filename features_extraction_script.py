@@ -81,20 +81,22 @@ def wrapperFeatures(train_dataset, test_dataset, feature_type):
 
     return new_feat_dataset, test_new_feat_dataset
 
-names = ['preprocessed_dataset_1.npz', 'preprocessed_dataset_2.npz', 'preprocessed_dataset_3.npz', 'preprocessed_dataset_4.npz', 'preprocessed_dataset_5.npz']
+# names = ['preprocessed_dataset_1.npz', 'preprocessed_dataset_2.npz', 'preprocessed_dataset_3.npz', 'preprocessed_dataset_4.npz', 'preprocessed_dataset_5.npz']
+names = ['filled_dataset.npz'] # to extract from filled dataset
 
 for index, name in enumerate(names):
 
-    data = np.load(os.path.join('data', 'preprocessed', name), allow_pickle=True)
+    # data = np.load(os.path.join('data', 'preprocessed', name), allow_pickle=True)
+    data = np.load(os.path.join('data', 'filled', name), allow_pickle=True) # to extract from filled dataset
 
     # training dataset
     x_train = data['x_train'].tolist()
     y_train = data['y_train']
-    idx_train = data['idx_train']
+    # idx_train = data['idx_train'] # to extract from filled dataset
 
     # test dataset
     x_test = data['x_test'].tolist()
-    idx_test = data['idx_test']
+    # idx_test = data['idx_test'] # to extract from filled dataset
 
     data_dict = {}
 
@@ -115,12 +117,18 @@ for index, name in enumerate(names):
         data_dict[key] = [newTrain, newTest]
 
     # Save
-    extraction_name = "feature_extracted_dataset_{}".format(index+1)
-    np.savez(os.path.join('data', 'feature_extracted', extraction_name),
+    # extraction_name = "feature_extracted_dataset_{}".format(index+1) # comment to extract from filled dataset
+    # np.savez(os.path.join('data', 'feature_extracted', extraction_name), # comment to extract from filled dataset
+    #          feature_extracted_dataset=data_dict, # comment to extract from filled dataset
+    #          y_train=y_train, # comment to extract from filled dataset
+    #          idx_train=idx_train, # comment to extract from filled dataset
+    #          idx_test=idx_test) # comment to extract from filled dataset
+    np.savez(os.path.join('data', 'feature_extracted', 'feature_extracted_filled'),
              feature_extracted_dataset=data_dict,
              y_train=y_train,
-             idx_train=idx_train,
-             idx_test=idx_test)
+            #  idx_train=idx_train, # comment to extract from filled dataset
+            #  idx_test=idx_test # comment to extract from filled dataset
+            )
 
 # TODO: (Michele) check of each variable data distribution etc..
 # TODO: better code
