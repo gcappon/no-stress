@@ -1,4 +1,5 @@
 env/
-data/
+data/original
 .ipynb_checkpoints/
 *.DS_Store
+.vscode/
