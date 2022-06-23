@@ -48,7 +48,6 @@ def wrapperFeatures(train_dataset, test_dataset, feature_type):
         # print(colnames)
 
         # Remove low variance features
-        ## TODO: (Michele) check this thresholds
         selector = VarianceThreshold()
         new_single_feat_matrix = selector.fit_transform(new_single_feat_matrix)
 
@@ -82,20 +81,21 @@ def wrapperFeatures(train_dataset, test_dataset, feature_type):
     return new_feat_dataset, test_new_feat_dataset
 
 # names = ['preprocessed_dataset_1.npz', 'preprocessed_dataset_2.npz', 'preprocessed_dataset_3.npz', 'preprocessed_dataset_4.npz', 'preprocessed_dataset_5.npz']
-names = ['filled_dataset.npz'] # to extract from filled dataset
+# names = ['filled_dataset.npz'] # to extract from filled dataset
+names = ['dataset_smile_challenge.npy']
 
 for index, name in enumerate(names):
 
     # data = np.load(os.path.join('data', 'preprocessed', name), allow_pickle=True)
-    data = np.load(os.path.join('data', 'filled', name), allow_pickle=True) # to extract from filled dataset
-
+    #data = np.load(os.path.join('data', 'filled', name), allow_pickle=True) # to extract from filled dataset
+    data = np.load(os.path.join('data','original', 'dataset_smile_challenge.npy'), allow_pickle = True).item()
     # training dataset
-    x_train = data['x_train'].tolist()
+    x_train = data['x_train']#.tolist()
     y_train = data['y_train']
     # idx_train = data['idx_train'] # to extract from filled dataset
 
     # test dataset
-    x_test = data['x_test'].tolist()
+    x_test = data['x_test']#.tolist()
     # idx_test = data['idx_test'] # to extract from filled dataset
 
     data_dict = {}
@@ -130,8 +130,6 @@ for index, name in enumerate(names):
             #  idx_test=idx_test # comment to extract from filled dataset
             )
 
-# TODO: (Michele) check of each variable data distribution etc..
-# TODO: better code
 
 # example to load the data
 # data = np.load(os.path.join('data', 'feature_extracted', 'feature_extracted_dataset_1.npz'), allow_pickle = True)
